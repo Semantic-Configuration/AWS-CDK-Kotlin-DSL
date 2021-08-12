@@ -19,6 +19,7 @@ import org.w3c.dom.NodeList
 import utility.SuspendedLazy
 import utility.cache
 import utility.withRetry
+import java.net.URL
 import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
 
@@ -44,12 +45,9 @@ object PackageManager {
     val allCdkModules = SuspendedLazy {
         println("Start to get list of CDK modules")
         println(requestUrl)
-        val response =
-            kotlin.run {
-                client.get<String>(requestUrl)
-            }
+        val obj = jacksonObjectMapper().readValue<ResponseJson>(URL(requestUrl))
         println("Completed getting list of CDK modules")
-        val obj = jacksonObjectMapper().readValue<ResponseJson>(response)
+
         obj.response.docs.filter {
             it.ec.containsAll(
                 listOf(
