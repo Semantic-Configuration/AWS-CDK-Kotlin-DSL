@@ -28,7 +28,7 @@ object PackageManager {
         "https://search.maven.org/solrsearch/select?q=g:software.amazon.awscdk&rows=400&wt=json&start=0"
 
     private const val artifactoryBaseUrl =
-        "https://chamelania.jfrog.io/artifactory/maven/jp/justincase/aws-cdk-kotlin-dsl"
+        "https://chamelania.jfrog.io/artifactory/maven/io/lemm/cdk/kotlin"
 
     @UseExperimental(KtorExperimentalAPI::class)
     private val client = HttpClient(CIO) {
@@ -38,7 +38,7 @@ object PackageManager {
         install(HttpTimeout)
     }
 
-    private val lowerBound = Version("1.20.0")
+    private val lowerBound = Version("1.118.0")
     private val upperBound = Version("2.0.0")
 
     val allCdkModules = SuspendedLazy {

@@ -23,7 +23,7 @@ val dslVersion =
         ?: System.getenv("CIRCLE_BRANCH")?.removePrefixOrNull("publishing/")?.split('-')?.get(1)
 
 allprojects {
-    group = "jp.justincase"
+    group = "io.lemm.cdk.kotlin.local"
     version = "$awsCdkVersion-${dslVersion ?: "unspecified"}"
 
     repositories {

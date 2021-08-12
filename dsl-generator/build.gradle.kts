@@ -11,7 +11,7 @@ val isCI = System.getenv("CI") == "true"
 publishing {
     publications {
         register("maven", MavenPublication::class) {
-            groupId = "jp.justincase"
+            groupId = "io.lemm.cdk.kotlin.local"
             artifactId = "cdk-dsl-generator"
             version = project.version.toString()
 

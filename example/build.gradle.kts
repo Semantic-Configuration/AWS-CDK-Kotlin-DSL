@@ -26,5 +26,5 @@ repositories {
 
 dependencies {
   implementation(kotlin("stdlib"))
-  implementation("jp.justincase.aws-cdk-kotlin-dsl", "s3", "1.118.0-0.6.25")
+  implementation("io.lemm.cdk.kotlin", "s3", "1.118.0-0.7.0")
 }

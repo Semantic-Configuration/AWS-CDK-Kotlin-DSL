@@ -195,7 +195,7 @@ object BuildFileGenerator {
 
         allprojects {
             apply(plugin = "maven-publish")
-            group = "jp.justincase.aws-cdk-kotlin-dsl"
+            group = "io.lemm.cdk.kotlin"
             version = "$cdkVersion-$projectVersion"
             
             repositories {
@@ -254,7 +254,7 @@ object BuildFileGenerator {
         }
 
         dependencies {
-            runtimeOnly("jp.justincase:cdk-dsl-generator:$projectVersion") {
+            runtimeOnly("io.lemm.cdk.kotlin.local:cdk-dsl-generator:$projectVersion") {
                 exclude(group = "software.amazon.awscdk")
             }
             runtimeOnly("software.amazon.awscdk", "$cdkModule", "$cdkVersion")
@@ -288,7 +288,7 @@ object BuildFileGenerator {
 
         dependencies {
             implementation(kotlin("stdlib"))
-            implementation("jp.justincase.aws-cdk-kotlin-dsl:dsl-common:$projectVersion")
+            implementation("io.lemm.cdk.kotlin:dsl-common:$projectVersion")
             api("software.amazon.awscdk", "$cdkModule", "$cdkVersion")
             implementation("software.amazon.awscdk", "core", "$cdkVersion")
             ${
@@ -324,7 +324,7 @@ object BuildFileGenerator {
         dependencies {
             constraints {
                 ${modules.joinToString(separator = "\n$t$t$t$t") {
-                    """api("jp.justincase.aws-cdk-kotlin-dsl:$it:${'$'}{project.version}")"""
+                    """api("io.lemm.cdk.kotlin:$it:${'$'}{project.version}")"""
                 }}
             }
         }

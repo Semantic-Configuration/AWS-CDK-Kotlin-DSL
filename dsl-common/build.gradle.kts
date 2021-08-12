@@ -5,7 +5,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "jp.justincase.aws-cdk-kotlin-dsl"
+group = "io.lemm.cdk.kotlin"
 version = (rootProject.version as String).let {
     if (it == "unsupecified") it else it.split("-")[1]
 }
@@ -31,7 +31,7 @@ val taskSourceJar by tasks.register<Jar>("sourcesJar") {
 publishing {
     publications {
         register("maven", MavenPublication::class) {
-            groupId = "jp.justincase.aws-cdk-kotlin-dsl"
+            groupId = "io.lemm.cdk.kotlin"
             artifactId = "dsl-common"
             version = project.version as String
 
