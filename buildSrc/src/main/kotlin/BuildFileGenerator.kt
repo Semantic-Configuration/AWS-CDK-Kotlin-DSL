@@ -137,7 +137,7 @@ object BuildFileGenerator {
         try {
             executor.setExitValue(0)
             executor.workingDirectory = File(targetDir, cdkVersion.toString())
-            executor.execute(CommandLine.parse("gradle -S generateAll build $parallelIfNotCi"), EnvironmentUtils.getProcEnvironment())
+            executor.execute(CommandLine.parse("gradle -S generateAll jar $parallelIfNotCi"), EnvironmentUtils.getProcEnvironment())
             executor.watchdog
         } catch (e: Exception) {
             throw e
