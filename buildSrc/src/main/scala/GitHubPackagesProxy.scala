@@ -16,7 +16,7 @@ object GitHubPackagesProxy extends IOApp {
   def run(args: List[String]): IO[Nothing] =
     Porterie[IO](
       38877,
-      forwarded[IO](_ withBaseUri https"://maven.pkg.github.com/justincase-jp/AWS-CDK-Kotlin-DSL").map {
+      forwarded[IO](_ withBaseUri https"://maven.pkg.github.com/Semantic-Configuration/AWS-CDK-Kotlin-DSL-Packages").map {
         case r @ PUT -> _ ~ extension if (extension match {
           case "pom" | "module" | "jar" => false
           case _ => true

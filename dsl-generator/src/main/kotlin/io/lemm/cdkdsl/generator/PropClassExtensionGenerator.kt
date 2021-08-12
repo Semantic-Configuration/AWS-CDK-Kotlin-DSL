@@ -68,7 +68,7 @@ object PropClassExtensionGenerator {
             // Annotation
             wrapper.addAnnotation(CdkDsl::class)
             wrapper.addAnnotation(AnnotationSpec.builder(Generated::class).apply {
-                addMember("value = [\"io.lemm.cdkdsl.generator.PropClassExtensionGenerator\", \"justincase-jp/AWS-CDK-Kotlin-DSL\"]")
+                addMember("value = [\"io.lemm.cdkdsl.generator.PropClassExtensionGenerator\", \"Semantic-Configuration/AWS-CDK-Kotlin-DSL\"]")
                 addMember("date = \"$generationDate\"")
             }.build())
 

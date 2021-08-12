@@ -1,6 +1,6 @@
 # AWS CDK Kotlin DSL
-[![CircleCI](https://circleci.com/gh/justincase-jp/AWS-CDK-Kotlin-DSL/tree/master.svg?style=shield)](
-  https://circleci.com/gh/justincase-jp/AWS-CDK-Kotlin-DSL/tree/master
+[![CircleCI](https://circleci.com/gh/Semantic-Configuration/AWS-CDK-Kotlin-DSL/tree/main.svg?style=shield)](
+  https://circleci.com/gh/Semantic-Configuration/AWS-CDK-Kotlin-DSL/tree/main
 )
 
 [**日本語**](README-JA.md)

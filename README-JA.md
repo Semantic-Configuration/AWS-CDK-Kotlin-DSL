@@ -1,6 +1,6 @@
 # AWS CDK Kotlin DSL
-[![CircleCI](https://circleci.com/gh/justincase-jp/AWS-CDK-Kotlin-DSL/tree/master.svg?style=shield)](
-  https://circleci.com/gh/justincase-jp/AWS-CDK-Kotlin-DSL/tree/master
+[![CircleCI](https://circleci.com/gh/Semantic-Configuration/AWS-CDK-Kotlin-DSL/tree/main.svg?style=shield)](
+  https://circleci.com/gh/Semantic-Configuration/AWS-CDK-Kotlin-DSL/tree/main
 )
 
 このライブラリは、[AWS CDK Java](https://mvnrepository.com/artifact/software.amazon.awscdk)のラッパーライブラリです。  

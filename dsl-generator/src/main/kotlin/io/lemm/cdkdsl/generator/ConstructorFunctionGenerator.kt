@@ -99,7 +99,7 @@ object ConstructorFunctionGenerator {
     ) {
         addAnnotation(CdkDsl::class)
         addAnnotation(AnnotationSpec.builder(Generated::class).apply {
-            addMember("value = [\"io.lemm.cdkdsl.generator.ConstructorFunctionGenerator\", \"justincase-jp/AWS-CDK-Kotlin-DSL\"]")
+            addMember("value = [\"io.lemm.cdkdsl.generator.ConstructorFunctionGenerator\", \"Semantic-Configuration/AWS-CDK-Kotlin-DSL\"]")
             addMember("date = \"$generationDate\"")
         }.build())
         returns(clazz)
