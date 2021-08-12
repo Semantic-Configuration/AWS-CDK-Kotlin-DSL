@@ -1,7 +1,4 @@
 import data.Version
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
 
 plugins {
     kotlin("jvm") version "1.4.10"
@@ -32,23 +29,9 @@ allprojects {
 }
 
 tasks {
-    val startGitHubPackagesProxy by creating {
+    create("startGitHubPackagesProxy") {
         doLast {
-            CoroutineScope(IO).launch {
-                try {
-                    println("Starting GitHubPackagesProxy...")
-                    GitHubPackagesProxy.main(arrayOf())
-                } catch (_: java.net.BindException) {
-                    println("Already running.") // Run `gradle --stop` if you are debugging locally
-                }
-            }
-        }
-    }
-    allprojects {
-        tasks.all {
-            if (name.startsWith("publish") || "Publish" in name) {
-                dependsOn(startGitHubPackagesProxy)
-            }
+            startGitHubPackagesProxy()
         }
     }
 

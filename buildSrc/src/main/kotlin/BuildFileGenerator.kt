@@ -49,6 +49,7 @@ object BuildFileGenerator {
         targetDir: File,
         version: Version
     ) = kotlin.run {
+        startGitHubPackagesProxy()
         publish(version, targetDir)
     }
 
@@ -153,6 +154,7 @@ object BuildFileGenerator {
     ) {
         PackageManager.unhandledCdkModules().keys.forEach { version ->
             buildSpecified(kotlinVersion, projectVersion, targetDir, bintrayCredential, version)
+            startGitHubPackagesProxy()
             publish(version, targetDir)
         }
     }

@@ -21,6 +21,9 @@ dependencies {
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+tasks.publish {
+    dependsOn(":startGitHubPackagesProxy")
+}
 
 val taskSourceJar by tasks.register<Jar>("sourcesJar") {
     from(sourceSets.main.get().allSource)
