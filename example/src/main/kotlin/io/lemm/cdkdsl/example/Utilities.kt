@@ -1,5 +1,5 @@
 @file:Suppress("FunctionName")
-package jp.justincase.cdkdsl.example
+package io.lemm.cdkdsl.example
 
 import software.amazon.awscdk.core.App
 import software.amazon.awscdk.core.Construct

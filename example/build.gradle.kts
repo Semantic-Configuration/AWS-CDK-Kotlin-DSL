@@ -17,7 +17,7 @@ tasks {
     outputs.dir("cdk.out")
   }
 }
-application.mainClass.set("jp.justincase.cdkdsl.example.Main")
+application.mainClass.set("io.lemm.cdkdsl.example.Main")
 
 repositories {
   mavenCentral()

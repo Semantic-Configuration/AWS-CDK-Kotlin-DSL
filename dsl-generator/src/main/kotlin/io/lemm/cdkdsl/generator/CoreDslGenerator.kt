@@ -1,6 +1,6 @@
-package jp.justincase.cdkdsl.generator
+package io.lemm.cdkdsl.generator
 
-import jp.justincase.cdkdsl.generator.utility.superTypesOf
+import io.lemm.cdkdsl.generator.utility.superTypesOf
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.mapNotNull

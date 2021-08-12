@@ -250,7 +250,7 @@ object BuildFileGenerator {
         }
 
         application {
-            mainClassName = "jp.justincase.cdkdsl.generator.MainKt"
+            mainClassName = "io.lemm.cdkdsl.generator.MainKt"
         }
 
         dependencies {

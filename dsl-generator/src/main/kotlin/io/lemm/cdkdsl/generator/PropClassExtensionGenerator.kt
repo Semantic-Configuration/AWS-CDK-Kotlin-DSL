@@ -1,4 +1,4 @@
-package jp.justincase.cdkdsl.generator
+package io.lemm.cdkdsl.generator
 
 import com.squareup.kotlinpoet.*
 import jp.justincase.cdkdsl.CdkDsl
@@ -68,7 +68,7 @@ object PropClassExtensionGenerator {
             // Annotation
             wrapper.addAnnotation(CdkDsl::class)
             wrapper.addAnnotation(AnnotationSpec.builder(Generated::class).apply {
-                addMember("value = [\"jp.justincase.cdkdsl.generator.PropClassExtensionGenerator\", \"justincase-jp/AWS-CDK-Kotlin-DSL\"]")
+                addMember("value = [\"io.lemm.cdkdsl.generator.PropClassExtensionGenerator\", \"justincase-jp/AWS-CDK-Kotlin-DSL\"]")
                 addMember("date = \"$generationDate\"")
             }.build())
 

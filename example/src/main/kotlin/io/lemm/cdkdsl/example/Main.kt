@@ -1,6 +1,6 @@
 @file:Suppress("SuspiciousCollectionReassignment")
 @file:JvmName("Main")
-package jp.justincase.cdkdsl.example
+package io.lemm.cdkdsl.example
 
 import jp.justincase.cdkdsl.services.s3.Bucket
 import jp.justincase.cdkdsl.services.s3.BucketMetrics

@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-package jp.justincase.cdkdsl.generator
+package io.lemm.cdkdsl.generator
 
 import com.google.common.reflect.ClassPath
 import com.squareup.kotlinpoet.AnnotationSpec

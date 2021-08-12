@@ -1,4 +1,4 @@
-package jp.justincase.cdkdsl.generator
+package io.lemm.cdkdsl.generator
 
 import kotlinx.coroutines.flow.Flow
 import java.io.File
