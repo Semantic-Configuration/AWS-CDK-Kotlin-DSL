@@ -2,7 +2,7 @@ version: 2.1
 
 jobs:
   buildUnhandled:
-    environment: { JAVA_TOOL_OPTIONS: -Xmx3g }
+    environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
     docker:
       - image: sdyip/gradle:7.0
     steps:
@@ -10,7 +10,7 @@ jobs:
       - run: gradle -S buildUnhandled
 
   buildSpecified:
-    environment: { JAVA_TOOL_OPTIONS: -Xmx3g }
+    environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
     docker:
       - image: sdyip/gradle:7.0
     steps:
@@ -25,7 +25,7 @@ jobs:
       - run: gradle -S buildAndPublishSpecifiedVersionForCI
 
   publishUnhandled:
-    environment: { JAVA_TOOL_OPTIONS: -Xmx3g }
+    environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
     docker:
       - image: sdyip/gradle:7.0
     steps:
@@ -39,7 +39,7 @@ jobs:
           gradle -S publishUnhandled
 
   publishDslCommon:
-    environment: { JAVA_TOOL_OPTIONS: -Xmx3g }
+    environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
     docker:
       - image: sdyip/gradle:7.0
     steps:
