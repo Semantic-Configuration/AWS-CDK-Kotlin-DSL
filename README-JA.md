@@ -49,7 +49,7 @@ fun main() {
 `exampleStack()` は以下の様に定義します。
 
 ```kotlin
-import jp.justincase.cdkdsl.core.*
+import io.lemm.cdk.kotlin.core.*
 
 fun App.exampleStack() = Stack("example-stack") {
     // 必要があればStackの設定をここで行います。
@@ -64,7 +64,7 @@ fun App.exampleStack() = Stack("example-stack") {
 以下のように記述することでS3 Bucketを追加できます。
 
 ```kotlin
-import jp.justincase.cdkdsl.services.s3.*
+import io.lemm.cdk.kotlin.services.s3.*
 
 Bucket("MyFirstBucket") {
     versioned = true

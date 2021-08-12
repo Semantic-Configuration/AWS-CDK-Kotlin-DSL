@@ -1,7 +1,7 @@
 package io.lemm.cdkdsl.generator
 
 import com.squareup.kotlinpoet.*
-import jp.justincase.cdkdsl.CdkDsl
+import io.lemm.cdk.kotlin.CdkDsl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*

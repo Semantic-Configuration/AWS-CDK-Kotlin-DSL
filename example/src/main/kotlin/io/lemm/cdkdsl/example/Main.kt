@@ -2,9 +2,9 @@
 @file:JvmName("Main")
 package io.lemm.cdkdsl.example
 
-import jp.justincase.cdkdsl.services.s3.Bucket
-import jp.justincase.cdkdsl.services.s3.BucketMetrics
-import jp.justincase.cdkdsl.services.s3.CfnBucket
+import io.lemm.cdk.kotlin.services.s3.Bucket
+import io.lemm.cdk.kotlin.services.s3.BucketMetrics
+import io.lemm.cdk.kotlin.services.s3.CfnBucket
 import software.amazon.awscdk.services.s3.BucketEncryption
 
 fun main() = synthesize {
