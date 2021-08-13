@@ -16,7 +16,7 @@ Gradle Kotlin DSL
 ```kotlin
 repositories {
   mavenCentral()
-  maven(url = "https://chamelania.lemm.io")
+  maven("https://cdk.lemm.io/maven")
 }
 
 dependencies {

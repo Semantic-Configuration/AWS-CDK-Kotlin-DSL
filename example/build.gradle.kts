@@ -21,7 +21,7 @@ application.mainClass.set("io.lemm.cdkdsl.example.Main")
 
 repositories {
   mavenCentral()
-  maven(url = "https://chamelania.lemm.io")
+  maven("https://cdk.lemm.io/maven")
 }
 
 dependencies {
