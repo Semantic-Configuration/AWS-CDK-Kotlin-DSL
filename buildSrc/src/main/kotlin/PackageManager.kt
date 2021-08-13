@@ -92,6 +92,7 @@ object PackageManager {
                     withRetry {
                         println(url)
                         val r = client.head<HttpResponse>(url)
+                        println(r.status)
 
                         when (r.status) {
                             HttpStatusCode.OK -> true
