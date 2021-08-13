@@ -27,6 +27,12 @@ dependencies {
 AWS-CDK-Kotlin-DSLの各モジュールは、[AWS CDK Java](https://mvnrepository.com/artifact/software.amazon.awscdk)の各モジュールに1:1で対応しています。  
 "$moduleName"の部分に適宜必要なモジュール名を補完してください。
 
+アップロード済みバージョンの一覧は [core/maven-metadata.xml](
+  https://cdk.lemm.io/maven/io/lemm/cdk/kotlin/core/maven-metadata.xml
+) か、（古いバージョンの場合）[ここ](
+  https://cdk.lemm.io/maven/jp/justincase/aws-cdk-kotlin-dsl/core/maven-metadata.xml
+)を確認してください。
+
 
 # 使用方法
 完全な例は [`example`](example) プロジェクトにあります。
