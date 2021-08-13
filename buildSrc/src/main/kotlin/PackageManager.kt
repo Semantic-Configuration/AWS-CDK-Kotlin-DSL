@@ -90,9 +90,8 @@ object PackageManager {
                     "$artifactoryBaseUrl/$module/$versionString/$module-$versionString.jar"
                 ).all { url ->
                     withRetry {
-                        println(url)
                         val r = client.head<HttpResponse>(url)
-                        println(r.status)
+                        println("${r.status} $url")
 
                         when (r.status) {
                             HttpStatusCode.OK -> true
