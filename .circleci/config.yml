@@ -4,7 +4,7 @@ jobs:
   buildUnhandled:
     environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
     docker:
-      - image: sdyip/gradle:7.0
+      - image: sdyip/gradle:7.1.1
     steps:
       - checkout
       - run: gradle -S buildUnhandled
@@ -12,14 +12,14 @@ jobs:
   buildSpecified:
     environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
     docker:
-      - image: sdyip/gradle:7.0
+      - image: sdyip/gradle:7.1.1
     steps:
       - checkout
       - run: gradle -S buildSpecified
 
   buildSpecifiedFromGitHub:
     docker:
-      - image: sdyip/gradle:7.0
+      - image: sdyip/gradle:7.1.1
     steps:
       - checkout
       - run: gradle -S buildAndPublishSpecifiedVersionForCI
@@ -27,7 +27,7 @@ jobs:
   publishUnhandled:
     environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
     docker:
-      - image: sdyip/gradle:7.0
+      - image: sdyip/gradle:7.1.1
     steps:
       - run: |
           apk add --no-cache git openssh-client
@@ -41,7 +41,7 @@ jobs:
   publishDslCommon:
     environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
     docker:
-      - image: sdyip/gradle:7.0
+      - image: sdyip/gradle:7.1.1
     steps:
       - checkout
       - run: "gradle -S :dsl-common:publish"
