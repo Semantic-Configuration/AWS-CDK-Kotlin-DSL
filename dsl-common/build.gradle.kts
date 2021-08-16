@@ -6,9 +6,6 @@ plugins {
 }
 
 group = "io.lemm.cdk.kotlin"
-version = (rootProject.version as String).let {
-    if (it == "unsupecified") it else it.split("-")[1]
-}
 
 repositories {
     mavenCentral()

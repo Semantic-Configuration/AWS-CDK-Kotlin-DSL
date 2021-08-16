@@ -12,15 +12,14 @@ tasks.wrapper {
 fun String.removePrefixOrNull(prefix: String): String? =
     takeIf { it.startsWith(prefix) }?.removePrefix(prefix)
 
-val kotlinVersion: String by project
-val awsCdkVersion: String by project
+val kotlinVersion = KotlinVersion.CURRENT.toString()
+val awsCdkVersion: String by System.getenv().withDefault { "1.66.0" }
 val dslVersion =
     System.getenv("CIRCLE_TAG")?.removePrefixOrNull("v")
         ?: System.getenv("CIRCLE_BRANCH")?.removePrefixOrNull("release/")
 
 allprojects {
-    group = "io.lemm.cdk.kotlin.local"
-    version = "$awsCdkVersion-${dslVersion ?: "unspecified"}"
+    version = dslVersion ?: "unspecified"
 
     repositories {
         mavenCentral()
