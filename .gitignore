@@ -3,6 +3,9 @@
 /*/.gradle
 /build
 /*/build
+/gradle
+/gradlew
+/gradlew.bat
 
 # IntelliJ
 /.idea
