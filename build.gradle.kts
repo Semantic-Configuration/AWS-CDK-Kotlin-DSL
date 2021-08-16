@@ -17,7 +17,6 @@ val awsCdkVersion: String by project
 val dslVersion =
     System.getenv("CIRCLE_TAG")?.removePrefixOrNull("v")
         ?: System.getenv("CIRCLE_BRANCH")?.removePrefixOrNull("release/")
-        ?: System.getenv("CIRCLE_BRANCH")?.removePrefixOrNull("publishing/")?.split('-')?.get(1)
 
 allprojects {
     group = "io.lemm.cdk.kotlin.local"
@@ -68,30 +67,6 @@ tasks {
                     File(buildDir, "cdkdsl"),
                     githubCredential
                 )
-            }
-        }
-
-        val publishingBranchName = System.getenv("CIRCLE_BRANCH")?.removePrefixOrNull("publishing/")
-        if(publishingBranchName != null) {
-            create("buildAndPublishSpecifiedVersionForCI") {
-                group = "cdk-dsl"
-                dependsOn(getByPath(":dsl-generator:publishToMavenLocal"))
-                dependsOn(getByPath(":dsl-common:publishToMavenLocal"))
-
-                val (cdk, dsl) = publishingBranchName.split('-')
-                doLastBlocking {
-                    BuildFileGenerator.buildSpecified(
-                        kotlinVersion,
-                        dsl,
-                        File(buildDir, "cdkdsl"),
-                        githubCredential,
-                        Version(cdk)
-                    )
-                    BuildFileGenerator.publishSpecified(
-                        File(buildDir, "cdkdsl"),
-                        Version(cdk)
-                    )
-                }
             }
         }
     }

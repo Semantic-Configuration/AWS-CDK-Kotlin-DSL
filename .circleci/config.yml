@@ -9,21 +9,6 @@ jobs:
       - checkout
       - run: gradle -S buildUnhandled
 
-  buildSpecified:
-    environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
-    docker:
-      - image: sdyip/gradle:7.1.1
-    steps:
-      - checkout
-      - run: gradle -S buildSpecified
-
-  buildSpecifiedFromGitHub:
-    docker:
-      - image: sdyip/gradle:7.1.1
-    steps:
-      - checkout
-      - run: gradle -S buildAndPublishSpecifiedVersionForCI
-
   publishUnhandled:
     environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
     docker:
@@ -52,7 +37,6 @@ workflows:
   untagged:
     jobs:
       - buildUnhandled
-      - buildSpecified
   current:
     jobs:
       - publishUnhandled
@@ -73,8 +57,3 @@ workflows:
           filters:
             tags: { only: /^v.*/ }
             branches: { only: /x^/ }
-
-  publishSpecificVersion:
-    jobs:
-      - buildSpecifiedFromGitHub:
-          filters: { branches: { only: /^publishing\/.*/ } }
