@@ -27,3 +27,12 @@ For reference, a list of published versions may be accessed via [core/maven-meta
 
 ## Usage
 Please refer to the [`example`](example) project.
+
+## Development Policy
+There is a chance that I will reconsider this, but basically for now:
+* This project will continue to aim for a straightforward translation of CDK interfaces
+  for idiomatic Kotlin until we have official support -
+  [Kotlin language support (#557)](https://github.com/aws/aws-cdk/issues/557).
+* To allow a smooth future transition of user projects to the official Kotlin support,
+  new additions that do not fit well into the scope of a straightforward translation
+  will be organized into separate modules. 
