@@ -2,7 +2,7 @@ version: 2.1
 
 jobs:
   buildUnhandled:
-    environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
+    environment: { JAVA_TOOL_OPTIONS: -Xmx768m, GRADLE_OPTS: -Dorg.gradle.daemon=false }
     docker:
       - image: sdyip/gradle:7.1.1
     steps:
@@ -10,7 +10,7 @@ jobs:
       - run: gradle -S buildUnhandled
 
   publishUnhandled:
-    environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
+    environment: { JAVA_TOOL_OPTIONS: -Xmx768m, GRADLE_OPTS: -Dorg.gradle.daemon=false }
     docker:
       - image: sdyip/gradle:7.1.1
     steps:
@@ -24,7 +24,7 @@ jobs:
           gradle -S publishUnhandled
 
   publishDslCommon:
-    environment: { JAVA_TOOL_OPTIONS: -Xmx2g }
+    environment: { JAVA_TOOL_OPTIONS: -Xmx768m, GRADLE_OPTS: -Dorg.gradle.daemon=false }
     docker:
       - image: sdyip/gradle:7.1.1
     steps:
@@ -45,7 +45,7 @@ workflows:
           cron: 0 5 * * *
           filters: { branches: { only: /^release\/.*/ } }
       - schedule:
-          cron: 21 9 7 8 *
+          cron: 52 19 20 8 *
           filters: { branches: { only: /^release\/.*/ } }
   all:
     jobs:
