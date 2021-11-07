@@ -25,8 +25,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 object PackageManager {
 
-    private const val requestUrl =
-        "https://search.maven.org/solrsearch/select?q=g:software.amazon.awscdk&rows=400&wt=json&start=0"
+    private fun requestUrl(start: Int) =
+        "https://search.maven.org/solrsearch/select?q=g:software.amazon.awscdk&wt=json&start=$start"
 
     private const val artifactoryBaseUrl =
         "https://chamelania.jfrog.io/artifactory/maven/io/lemm/cdk/kotlin"
@@ -44,11 +44,23 @@ object PackageManager {
 
     val allCdkModules = SuspendedLazy {
         println("Start to get list of CDK modules")
-        println(requestUrl)
-        val obj = jacksonObjectMapper().readValue<ResponseJson>(URL(requestUrl))
+
+        val responses = generateSequence(
+            0 to jacksonObjectMapper().readValue<ResponseJson>(URL(requestUrl(0))).response.docs
+        ) { (start, docs) ->
+            when (val size = docs.size) {
+                0 -> null
+                else -> {
+                    val nextStart = start + size
+                    val url = URL(requestUrl(nextStart))
+                    println(url)
+                    nextStart to jacksonObjectMapper().readValue<ResponseJson>(url).response.docs
+                }
+            }
+        }.toList()
         println("Completed getting list of CDK modules")
 
-        obj.response.docs.filter {
+        responses.asSequence().flatMap { (_, docs) -> docs.asSequence() }.filter {
             it.ec.containsAll(
                 listOf(
                     ".jar",
