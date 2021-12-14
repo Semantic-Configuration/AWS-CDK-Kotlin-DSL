@@ -19,10 +19,6 @@ publishing {
     }
 }
 
-repositories {
-    maven(url = "https://kotlin.bintray.com/kotlinx")
-}
-
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
