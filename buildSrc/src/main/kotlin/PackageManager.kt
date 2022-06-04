@@ -180,6 +180,11 @@ object PackageManager {
                     .map { it to module }
             }
             .groupByTo(TreeMap(), { it.first }) { it.second }
+            .also {
+                it.forEach { version, modules ->
+                    println("Unhandled modules for $version: $modules")
+                }
+            }
     }
 
     val moduleDependency =
