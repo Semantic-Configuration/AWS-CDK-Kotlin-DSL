@@ -2,6 +2,7 @@ version: 2.1
 
 jobs:
   buildUnhandled:
+    resource_class: large
     environment: { JAVA_TOOL_OPTIONS: -Xmx768m, GRADLE_OPTS: -Dorg.gradle.daemon=false }
     docker:
       - image: sdyip/gradle:7.1.1
@@ -10,6 +11,7 @@ jobs:
       - run: gradle -S buildUnhandled
 
   publishUnhandled:
+    resource_class: large
     environment: { JAVA_TOOL_OPTIONS: -Xmx768m, GRADLE_OPTS: -Dorg.gradle.daemon=false }
     docker:
       - image: sdyip/gradle:7.1.1
@@ -24,6 +26,7 @@ jobs:
           gradle -S publishUnhandled
 
   publishDslCommon:
+    resource_class: large
     environment: { JAVA_TOOL_OPTIONS: -Xmx768m, GRADLE_OPTS: -Dorg.gradle.daemon=false }
     docker:
       - image: sdyip/gradle:7.1.1
