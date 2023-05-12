@@ -1,7 +1,8 @@
 import data.Version
+import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 
 plugins {
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "1.5.32"
     id("maven-publish")
 }
 
@@ -12,7 +13,7 @@ tasks.wrapper {
 fun String.removePrefixOrNull(prefix: String): String? =
     takeIf { it.startsWith(prefix) }?.removePrefix(prefix)
 
-val kotlinVersion = KotlinVersion.CURRENT.toString()
+val kotlinVersion = getKotlinPluginVersion()
 val awsCdkVersion: String by System.getenv().withDefault { "1.66.0" }
 val dslVersion =
     System.getenv("CIRCLE_TAG")?.removePrefixOrNull("v")
