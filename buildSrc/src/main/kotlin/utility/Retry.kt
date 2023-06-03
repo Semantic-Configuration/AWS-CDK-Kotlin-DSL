@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.retry
 
-@UseExperimental(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class)
 suspend fun <T> withRetry(attempts: Long = 30, backoff: Long = 3000, block: suspend () -> T): T =
     flow { emit(block()) }
         .retry(attempts) {

@@ -31,7 +31,7 @@ object PackageManager {
     private const val artifactoryBaseUrl =
         "https://chamelania.jfrog.io/artifactory/maven/io/lemm/cdk/kotlin"
 
-    @UseExperimental(KtorExperimentalAPI::class)
+    @OptIn(KtorExperimentalAPI::class)
     private val client = HttpClient(CIO) {
         engine {
             requestTimeout = 30000

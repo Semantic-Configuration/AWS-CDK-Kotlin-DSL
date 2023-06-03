@@ -7,7 +7,7 @@ plugins {
 }
 
 tasks.wrapper {
-    gradleVersion = "7.1.1"
+    gradleVersion = "7.6.1"
 }
 
 fun String.removePrefixOrNull(prefix: String): String? =
