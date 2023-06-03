@@ -14,7 +14,7 @@ fun String.removePrefixOrNull(prefix: String): String? =
     takeIf { it.startsWith(prefix) }?.removePrefix(prefix)
 
 val kotlinVersion = getKotlinPluginVersion()
-val awsCdkVersion: String by System.getenv().withDefault { "1.66.0" }
+val awsCdkVersion: String by System.getenv().withDefault { "1.201.0" }
 val dslVersion =
     System.getenv("CIRCLE_TAG")?.removePrefixOrNull("v")
         ?: System.getenv("CIRCLE_BRANCH")?.removePrefixOrNull("release/")

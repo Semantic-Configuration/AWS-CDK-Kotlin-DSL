@@ -3,7 +3,7 @@ plugins {
     kotlin("jvm")
 }
 
-val awsCdkVersion: String by System.getenv().withDefault { "1.66.0" }
+val awsCdkVersion: String by System.getenv().withDefault { "1.201.0" }
 
 val isCI = System.getenv("CI") == "true"
 
