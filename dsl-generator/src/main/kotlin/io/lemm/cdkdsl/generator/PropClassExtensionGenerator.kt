@@ -25,19 +25,19 @@ object PropClassExtensionGenerator {
         targetDir: File,
         packageName: String
     ) {
-        val file = getFileSpecBuilder(packageName.split('.').last().capitalize(), packageName)
-
-        file.addAliasedImport(MemberName("kotlin.collections", "plus"), "nonNullPlus")
+        val capitalizePackageName = packageName.split('.').last().capitalize()
+        val file = getFileSpecBuilder(capitalizePackageName, packageName)
+            .addAliasedImport(MemberName("kotlin.collections", "plus"), "nonNullPlus")
 
         val builderClasses = classes.map { (clazz, target) ->
             clazz.declaredClasses.single { it.simpleName == "Builder" }.kotlin to target
         }
-
         builderClasses.filter { (it, _) ->
             it.java.declaringClass.declaringClass == null
         }.buildClasses().forEach { (_, spec) ->
             file.addType(spec)
         }
+        withContext(Dispatchers.IO) { file.build().writeTo(targetDir) }
 
         val parentMap = mutableMapOf<Class<*>, TypeSpec.Builder>()
 
@@ -54,12 +54,14 @@ object PropClassExtensionGenerator {
             }
             parent.addType(spec)
         }
+        parentMap.forEach { (c, builder) ->
+            require(c.simpleName != capitalizePackageName) { "Name collision detected between $c and $packageName!" }
 
-        parentMap.forEach { (_, builder) ->
-            file.addType(builder.build())
+            val f = getFileSpecBuilder(c.simpleName, packageName)
+                .addAliasedImport(MemberName("kotlin.collections", "plus"), "nonNullPlus")
+                .addType(builder.build())
+            withContext(Dispatchers.IO) { f.build().writeTo(targetDir) }
         }
-
-        withContext(Dispatchers.IO) { file.build().writeTo(targetDir) }
     }
 
     private suspend fun Flow<Pair<KClass<out Any>, CoreDslGenerator.GenerationTarget>>.buildClasses(): Map<KClass<*>, TypeSpec> {
