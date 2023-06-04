@@ -135,8 +135,9 @@ object BuildFileGenerator {
     ) {
         println("Start generation and build for cdk version $cdkVersion")
         val executor = DefaultExecutor()
-        val environments = EnvironmentUtils.getProcEnvironment() + (
-            "GRADLE_OPTS" to "-Dorg.gradle.jvmargs=-Xmx3584m"
+        val environments = EnvironmentUtils.getProcEnvironment() + arrayOf(
+            "JAVA_TOOL_OPTIONS" to "-Xmx256m",
+            "GRADLE_OPTS" to "-Dorg.gradle.jvmargs=-Xmx3328m"
         )
         try {
             executor.setExitValue(0)
