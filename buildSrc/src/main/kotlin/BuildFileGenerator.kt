@@ -135,9 +135,8 @@ object BuildFileGenerator {
     ) {
         println("Start generation and build for cdk version $cdkVersion")
         val executor = DefaultExecutor()
-        val environments = EnvironmentUtils.getProcEnvironment() + arrayOf(
-            "JAVA_TOOL_OPTIONS" to "-Xmx256m",
-            "GRADLE_OPTS" to "-Dorg.gradle.jvmargs=-Xmx3328m"
+        val environments = EnvironmentUtils.getProcEnvironment() + (
+            "GRADLE_OPTS" to "-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx3584m"
         )
         try {
             executor.setExitValue(0)
@@ -169,10 +168,13 @@ object BuildFileGenerator {
     ) {
         println("Start publishing for cdk version $cdkVersion")
         val executor = DefaultExecutor()
+        val environments = EnvironmentUtils.getProcEnvironment() + (
+            "GRADLE_OPTS" to "-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx3584m"
+        )
         try {
             executor.setExitValue(0)
             executor.workingDirectory = File(targetDir, cdkVersion.toString())
-            executor.execute(CommandLine.parse("gradle -S publishAll $parallelIfNotCi"))
+            executor.execute(CommandLine.parse("gradle -S publishAll $parallelIfNotCi"), environments)
         } catch (e: Exception) {
             throw e
         }
